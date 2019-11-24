@@ -1,7 +1,9 @@
 import path from 'path';
 import { promises as fs } from 'fs';
 import { NodeServiceConfig } from './config';
-
+import childProcess from 'child_process';
+import { promisify } from 'util';
+const exec = promisify(childProcess.exec);
 
 function safeAddScripts(packageJson: any, config: NodeServiceConfig) {
     if (!packageJson.scripts)
@@ -51,4 +53,19 @@ export async function writeGitignore(dirPath: string, config: NodeServiceConfig)
         return await fs.writeFile(gitignorePath, gitignore + '\nlib\n');
     }
     return await fs.writeFile(gitignorePath, gitignore);
+}
+
+export async function initializeProjectStructure(
+    dirPath: string,
+    config: NodeServiceConfig
+) {
+    if (config.isTypescript) {
+        return await Promise.all([
+            fs.mkdir(path.join(dirPath, 'src')),
+            exec(`cd ${dirPath} && tsc --init`)
+        ]);
+    }
+    return await Promise.all([
+        fs.mkdir(path.join(dirPath, 'lib')),
+    ]);
 }
