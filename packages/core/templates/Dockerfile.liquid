@@ -1,0 +1,14 @@
+FROM       node:12-slim{% if isTypescript %} as build{% endif %}
+WORKDIR    /workspace
+COPY       . .
+RUN        npm ci
+{% if isTypescript %}
+RUN        npm run build
+
+FROM       node:12-slim as runtime
+WORKDIR    /app
+COPY       --from=build /workspace/dist .
+CMD        [ "node", "dist" ]
+{% else %}
+CMD        [ "node", "lib" ]
+{% endif %}

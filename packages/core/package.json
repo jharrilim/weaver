@@ -1,0 +1,38 @@
+{
+  "name": "core",
+  "version": "0.1.0",
+  "description": "> TODO: description",
+  "author": "Joseph Harrison-Lim <josephharrisonlim@gmail.com>",
+  "homepage": "https://github.com/jharrilim/weaver/tree/master/packages/core#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "src",
+    "templates"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jharrilim/weaver.git"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "bugs": {
+    "url": "https://github.com/jharrilim/weaver/issues"
+  },
+  "dependencies": {
+    "cpy": "^7.3.0",
+    "js-yaml": "^3.13.1",
+    "liquidjs": "^9.4.2"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^3.12.1",
+    "package-json": "^6.5.0"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "weaver",
+  "version": "0.1.0",
+  "description": "node microservice management",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "lerna run build",
+    "lerna": "lerna",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jharrilim/weaver.git"
+  },
+  "keywords": [
+    "node",
+    "microservice",
+    "docker",
+    "code",
+    "generation"
+  ],
+  "author": "Joseph Harrison-Lim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jharrilim/weaver/issues"
+  },
+  "homepage": "https://github.com/jharrilim/weaver#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.12",
+    "lerna": "^3.19.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.2"
+  }
+}
