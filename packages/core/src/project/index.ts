@@ -23,7 +23,7 @@ export async function findWeaverConfig(p: string): Promise<{ path: string, type:
     }
 
     // if path is dir, check the files in the dir for a weaver config
-    while(p !== '') {
+    while (p !== '') {
         const dir = await fs.readdir(parsedPath.dir);
         for (let file of dir) {
             const fp = path.parse(path.join(parsedPath.dir, file));
@@ -59,14 +59,4 @@ export async function makePackagesDir(dirPath: string) {
 
 export async function createConfig(dirPath: string, opts = {}) {
     return fs.writeFile(dirPath, JSON.stringify(opts));
-}
-
-export async function initializePackageJson(dirPath: string) {
-    const fh = await fs.open(
-        path.join(dirPath, 'package.json'),
-        'a+' /* read/append, create if doesn't exist */
-    );
-    const f = await fh.readFile();
-    const packageJson = JSON.parse(f.toString());
-    
 }

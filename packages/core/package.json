@@ -27,7 +27,6 @@
     "url": "https://github.com/jharrilim/weaver/issues"
   },
   "dependencies": {
-    "cpy": "^7.3.0",
     "js-yaml": "^3.13.1",
     "liquidjs": "^9.4.2"
   },
