@@ -2,6 +2,14 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"name": "Weaver CLI",
+			"path": "./packages/cli"
+		},
+		{
+			"name": "Weaver Core",
+			"path": "./packages/core"
 		}
 	],
 	"settings": {}

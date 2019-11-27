@@ -6,7 +6,8 @@
   "scripts": {
     "build": "lerna run build",
     "lerna": "lerna",
-    "test": "jest"
+    "link": "lerna link",
+    "test": "lerna run test"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.23",
     "@types/node": "^12.12.12",
+    "jest": "^24.9.0",
     "lerna": "^3.19.0",
     "ts-jest": "^24.2.0",
     "typescript": "^3.7.2"

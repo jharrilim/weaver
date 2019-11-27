@@ -1,4 +1,10 @@
+import { initialize } from '@weaver/core';
+import { tmpdir } from 'os';
+import { join } from 'path';
 
-export default function () {
-
+export async function init() {
+    return await initialize(join(tmpdir(), 'weavertest'));
 }
+
+init()
+    .catch(console.error);

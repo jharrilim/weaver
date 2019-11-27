@@ -1,5 +1,5 @@
 {
-  "name": "cli",
+  "name": "@weaver/cli",
   "version": "0.1.0",
   "description": "weaver cli",
   "keywords": [
@@ -22,9 +22,12 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "jest"
   },
   "bugs": {
     "url": "https://github.com/jharrilim/weaver/issues"
+  },
+  "dependencies": {
+    "@weaver/core": "0.1.0"
   }
 }
