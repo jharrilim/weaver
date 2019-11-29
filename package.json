@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "lerna run build",
+    "bootstrap": "lerna bootstrap",
     "lerna": "lerna",
     "link": "lerna link",
     "test": "lerna run test"
