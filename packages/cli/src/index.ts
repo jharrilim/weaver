@@ -3,8 +3,10 @@ import { tmpdir } from 'os';
 import { join } from 'path';
 
 export async function init() {
-    return await initialize(join(tmpdir(), 'weavertest'));
+    const path = join(tmpdir(), 'weavertest');
+    return await initialize(path);
 }
 
-init()
-    .catch(console.error);
+if(__filename == process.mainModule!.filename)
+    init()
+        .catch(console.error);

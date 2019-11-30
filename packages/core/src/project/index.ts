@@ -54,9 +54,14 @@ export async function readConfig(): Promise<WeaverConfig> {
 }
 
 export async function makePackagesDir(dirPath: string) {
-    return fs.mkdir(path.join(dirPath, 'packages'));
+    const packagesPath = path.join(dirPath, 'packages');
+    try {
+        await fs.access(packagesPath);
+    } catch {
+        return fs.mkdir(packagesPath);
+    }
 }
 
 export async function createConfig(dirPath: string, opts = {}) {
-    return fs.writeFile(dirPath, JSON.stringify(opts));
+    return fs.writeFile(path.join(dirPath, 'weaver.json'), JSON.stringify(opts, null, 2));
 }

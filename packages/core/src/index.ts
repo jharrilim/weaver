@@ -1,16 +1,15 @@
 import { createConfig, makePackagesDir } from './project';
-import { promises as fs, constants as fsConstants } from 'fs';
+import { promises as fs } from 'fs';
 
-export function initialize(path = process.cwd()) {
-    fs.access(path, fsConstants.F_OK)
-        .catch(() => fs.mkdir(path, { recursive: true }));    
-    process.chdir(path);
-    Promise.all([
+export async function initialize(path: string) {    
+    await fs.access(path)
+        .catch(() => fs.mkdir(path, { recursive: true }));
+
+    return await Promise.all([
         createConfig(path),
         makePackagesDir(path),
 
-    ])
-    return createConfig(path);
+    ]);
 }
 
 export function createMicroservice() {
