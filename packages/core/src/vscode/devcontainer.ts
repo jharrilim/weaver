@@ -1,5 +1,5 @@
-import http from 'http';
 import path from 'path';
+import https from 'https';
 
 import { promises as fs } from 'fs';
 
@@ -8,10 +8,10 @@ import { promises as fs } from 'fs';
 type DevcontainerKind = 'typescript-node-12' | 'javascript-node-12';
 
 export async function initializeDevcontainer(dirPath: string, kind: DevcontainerKind) {
-    const request = new Promise<string>((resolve, reject) => {
+    const request = () => new Promise<string>((resolve, reject) => {
         const url =
             `https://raw.githubusercontent.com/microsoft/vscode-dev-containers/master/containers/${kind}/.devcontainer`;
-        http.get(`${url}/Dockerfile`, res => {
+        https.get(`${url}/Dockerfile`, res => {
             if (res.statusCode !== 200) {
                 reject(new Error(`Unable to get Dockerfile at:\n${url}/Dockerfile.\nStatus Code: ${res.statusCode}`));
             }
@@ -27,9 +27,9 @@ export async function initializeDevcontainer(dirPath: string, kind: Devcontainer
 
     const devcontainerPath = path.join(dirPath, '.devcontainer');
     const [response] = await Promise.all([
-        request,
-        fs.mkdir(devcontainerPath)
+        request(),
+        fs.mkdir(devcontainerPath, { recursive: true }),
     ]);
 
-    return await fs.writeFile(path.join(dirPath, '.devcontainer'), response);
+    return await fs.writeFile(path.join(devcontainerPath, 'Dockerfile'), response);
 }
