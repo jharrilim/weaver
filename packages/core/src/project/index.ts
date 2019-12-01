@@ -2,7 +2,7 @@ import path from 'path';
 import yaml from 'js-yaml';
 
 import { WeaverConfig } from './config';
-import { promises as fs } from 'fs';
+import { promises as fs, constants as fsConstants } from 'fs';
 const { readFile } = fs;
 
 function pathPop(p: string): string {
@@ -58,10 +58,16 @@ export async function makePackagesDir(dirPath: string) {
     try {
         await fs.access(packagesPath);
     } catch {
-        return fs.mkdir(packagesPath);
+        return await fs.mkdir(packagesPath);
     }
 }
 
 export async function createConfig(dirPath: string, opts = {}) {
-    return fs.writeFile(path.join(dirPath, 'weaver.json'), JSON.stringify(opts, null, 2));
+    const weaverPath = path.join(dirPath, 'weaver.json');
+
+    try {
+        await fs.access(weaverPath, fsConstants.F_OK);
+    } catch {
+        return fs.writeFile(weaverPath, JSON.stringify(opts, null, 2));
+    }
 }
