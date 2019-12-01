@@ -16,3 +16,15 @@
   - Backing services
   - Multi-environment deployment
   - Port Bindings
+
+## Try it Out
+
+Currently Weaver is not ready for production use. You can however try it after cloning the project and entering the repo:
+
+```sh
+npm i
+npm run bootstrap
+npm run build
+
+node packages/cli/lib # Currently output goes into weavertest in your temp dir.
+```
