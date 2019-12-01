@@ -1,7 +1,7 @@
 import path from 'path';
 import { promises as fs, constants as fsConstants } from 'fs';
 import { CodeWorkspace } from './code-workspace';
-
+export * from './tasks';
 const workspaceExt = '.code-workspace';
 
 async function initializeVscodeDirectory(dotVscodeDirPath: string) {
