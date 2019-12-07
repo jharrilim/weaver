@@ -1,5 +1,7 @@
 # Weaver
 
+![Github Actions: Build & Test](https://github.com/jharrilim/weaver/workflows/Node%20CI/badge.svg)
+
 ## Scope
 
 - Microservice initialization and management
