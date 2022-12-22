@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "js-yaml": "^3.13.1",
-    "liquidjs": "^9.4.2"
+    "liquidjs": "^10.0.0"
   },
   "devDependencies": {
     "@types/js-yaml": "^3.12.1",
